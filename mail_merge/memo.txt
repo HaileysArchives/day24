@@ -1,0 +1,79 @@
+# demofile.txt 파일 읽기 
+
+FileNotFoundError: [Errno 2] No such file or directory: 'demofile.txt'
+
+
+Absolute File Path => Always start root folder. (Sometimes C:/ or Mac/.)
+- Example: /Work/Project/talk.ppt
+
+
+Relative File Path
+(Working directory) => ./talk.ppt
+상대 파일 경로는 내 작업 경로에 따라 주소가 달라진다. 
+One step up => ../report.doc (두 점은 부모 폴더로 가는 계층 구조에서 한 단계 위로 가라는 의미) 
+
+같은 디렉토리에 있을 경우에는 just write './report.doc' or 'report.doc'. 
+
+with open("my_file.txt") as file:
+    contents = file.read()
+    print(contents) 
+
+*절대 경로 사용하기 
+with open("C/Users/angela/Desktop/my_file.txt") as file:
+    contents = file.read()
+    print(contnets)
+
+'Show in Explorer'를 통해 파일 경로를 확인할 수 있다. 
+
+----------------------------------------------------------
+Mail Merge Project
+
+This method will help you: https://www.w3schools.com/python/ref_file_readlines.asp
+    #Hint2: This method will also help you: https://www.w3schools.com/python/ref_string_replace.asp
+        #Hint3: THis method will help you: https://www.w3schools.com/python/ref_string_strip.asp
+
+<첫 번째 메소드>
+f = open("demofile.txt", "r")
+print(f.readlines()) # readlines(hint) 안에는 반환되는 줄 수를 제한하려면 힌트 매개변수
+
+<두 번째 메소드>
+txt = "I like bananas"
+x = txt.replace("bananas", "apples")
+print(x) 
+
+<세 번째 메소드>
+txt = "	banana	"
+x = txt.strip()
+print("of all fruits", x, "is my favorite") 
+* strip() 메소드는 선행 및 후행 공백을 제거 
+# of all fruits banana is my favorite
+=> 선행은 문자열의 시작을 의미하고 후행은 끝을 의미한다. 혹은 제거할 문자를 지정할 수도 있다. 
+
+txt = ",,,,,rrttgg......banana.....rrrr"
+x = txt.strip(",.grt")
+print(x) 
+
+--------------------------------
+PLACEHOLDER = "[name]"
+
+with open("./Input/Names/invited_names.txt") as name_file:
+    names = names_file.read()
+    print(names)
+
+with open("./Input/Names/invited_names.txt") as name_file:
+    names = names_file.readlines() # List of names.
+
+with open("./Input/Letters/starting_letter.txt") as letter_file:
+    letter_contents = letter_file.read()
+    for name in names:
+         stripped_name = name.strip()
+         new_letter = letter_contents.replace(PLACEHOLDER, name)
+         with open(f"./Output/ReadyToSend/letter_for_{strippted_name}.txt", mode="w") as completed_letter:
+             completed_letter.write(new_letter)
+
+
+
+
+
+
+
